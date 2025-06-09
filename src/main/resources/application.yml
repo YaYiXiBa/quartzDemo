@@ -1,0 +1,22 @@
+spring:
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: never
+    properties:
+      org:
+        quartz:
+          jobStore:
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX  # ??????[6,7](@ref)
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate  # ?? JDBC ??
+            tablePrefix: QRTZ_  # ????????????[3,6](@ref)
+            isClustered: true  # ??????[3,7](@ref)
+            dataSource: quartzDS  # ???????
+          dataSource:
+            quartzDS: # ?????????????????
+              driver: com.mysql.cj.jdbc.Driver
+              URL: jdbc:mysql://localhost:3306/quartz_db?useSSL=false
+              user: admin
+              password: s3cr3t
+              maxConnections: 10  # ????? ? ?????[2,8](@ref)
+
