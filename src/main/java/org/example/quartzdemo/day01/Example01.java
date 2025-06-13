@@ -37,6 +37,7 @@ public class Example01 {
                     ).build();
             scheduler.scheduleJob(jobDetail, trigger);
 
+
         } catch (SchedulerException e) {
             throw new RuntimeException(e);
         }
